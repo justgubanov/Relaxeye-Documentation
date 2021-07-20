@@ -1,37 +1,38 @@
-## Welcome to GitHub Pages
+Relaxeye App Privacy Policy
+===
 
-You can use the [editor on GitHub](https://github.com/justgubanov/relaxeye.github.io/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Our stance on privacy
+---
 
-### Markdown
+We strongly believe that **your data is yours**. Because of this, we do not collect any identifiable information about our users, only tracking the bare minimum needed to hunt down bugs and crashes.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+What information does Nudget collect?
+---
 
-```markdown
-Syntax highlighted code block
+Relaxeye collects anonymized metadata using Apple's built in metrics system. This system sends data such as session length, crash reports, device type, and locale. **Relaxeye never collects any personal information, including any data you enter within the app.**
+‍
+More information about what data Apple collects on behalf of developers can be found on this [website](https://support.apple.com/en-us/HT210584#)
 
-# Header 1
-## Header 2
-### Header 3
+What does Relaxeye do with my data?
+---
 
-- Bulleted
-- List
+Anonymized crash reports and device info are used to fix crashes within the app. Your anonymized device data may also be used to prioritize support for translating to certain locales. Total download count and other summed up metrics may be used for marketing purposes. **Your data is never sold or shared with third parties.**
 
-1. Numbered
-2. List
+How can I opt out of anonymized data collection?
+---
 
-**Bold** and _Italic_ and `Code` text
+You can disable Apple's analytic reports by going to your device settings:
+Settings > Privacy > Analytics & Improvements > Share With App Developers "OFF"
 
-[Link](url) and ![Image](src)
-```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Changes to this policy
+---
 
-### Jekyll Themes
+Changes to this privacy policy may periodically be made and posted here. We suggest you visit this page for updates.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/justgubanov/relaxeye.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+---
 
-### Support or Contact
+Policy updated on 7/20/2021
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+© 2021 Alex Gubanov, All rights reserved.
