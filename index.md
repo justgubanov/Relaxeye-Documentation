@@ -1,4 +1,4 @@
-Privacy Policy
+Relaxeye App Privacy Policy
 ===
 
 
