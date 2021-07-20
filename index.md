@@ -12,7 +12,7 @@ What information does Relaxeye collect?
 
 Relaxeye collects anonymized metadata using Apple's built in metrics system. This system sends data such as session length, crash reports, device type, and locale. **Relaxeye never collects any personal information, including any data you enter within the app.**
 ‍
-More information about what data Apple collects on behalf of developers can be found on this [website](https://support.apple.com/en-us/HT210584#)
+More information about what data Apple collects on behalf of developers can be found on [App Store & Privacy](https://support.apple.com/en-us/HT210584#) official page.
 
 What does Relaxeye do with my data?
 ---
