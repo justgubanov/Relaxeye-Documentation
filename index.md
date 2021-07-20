@@ -7,7 +7,7 @@ Our stance on privacy
 
 We strongly believe that **your data is yours**. Because of this, we do not collect any identifiable information about our users, only tracking the bare minimum needed to hunt down bugs and crashes.
 
-What information does Nudget collect?
+What information does Relaxeye collect?
 ---
 
 Relaxeye collects anonymized metadata using Apple's built in metrics system. This system sends data such as session length, crash reports, device type, and locale. **Relaxeye never collects any personal information, including any data you enter within the app.**
