@@ -1,2 +1,4 @@
 theme: jekyll-theme-minimal
 include: [.well-known, privacy, demo]
+plugins:
+  - jekyll-seo-tag
