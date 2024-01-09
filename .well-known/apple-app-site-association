@@ -1,0 +1,17 @@
+{
+"appLinks": {
+    "details": [
+        {
+            "appIDs": [ "3TZTCAQPPM.app.relaxeye" ],
+            "components": [
+                {
+                    "/": "*",
+                    "comment": "Matches any URL."
+                }
+            ]
+        }
+    ]
+},
+"webcredentials": {
+    "apps": [ "3TZTCAQPPM.app.relaxeye" ]
+}
