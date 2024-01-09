@@ -2,7 +2,7 @@
 "appLinks": {
     "details": [
         {
-            "appIDs": [ "3TZTCAQPPM.app.relaxeye" ],
+            "appIDs": [ "3TZTCAQPPM.app.Relaxeye" ],
             "components": [
                 {
                     "/": "*",
@@ -13,5 +13,5 @@
     ]
 },
 "webcredentials": {
-    "apps": [ "3TZTCAQPPM.app.relaxeye" ]
+    "apps": [ "3TZTCAQPPM.app.Relaxeye" ]
 }
