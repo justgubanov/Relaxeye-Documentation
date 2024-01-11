@@ -1,17 +1,21 @@
 {
-"appLinks": {
-    "details": [
-        {
-            "appIDs": [ "3TZTCAQPPM.app.Relaxeye" ],
-            "components": [
-                {
-                    "/": "*",
-                    "comment": "Matches any URL."
-                }
-            ]
-        }
-    ]
-},
-"webcredentials": {
-    "apps": [ "3TZTCAQPPM.app.Relaxeye" ]
+    "appLinks": {
+        "details": [
+            {
+                "appID": "3TZTCAQPPM.app.Relaxeye",
+                "paths": [
+                    "/demo/"
+                ],
+                "appIDs": [
+                    "3TZTCAQPPM.app.Relaxeye"
+                ],
+                "components": [
+                    {
+                        "/": "/demo/",
+                        "comment": "Matches only URL whose path equals /demo/."
+                    }
+                ]
+            }
+        ]
+    }
 }
