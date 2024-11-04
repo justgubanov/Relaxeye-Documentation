@@ -28,6 +28,48 @@
                 overflow-x: hidden;
             }
 
+            /* Toolbar styling */
+            .toolbar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                display: flex;
+                align-items: center;
+                background-color: rgba(0, 0, 0, 0.5);
+                color: #FFFFFF;
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                box-sizing: border-box;
+                z-index: 1000;
+                width: 100%;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .toolbar.visible {
+                opacity: 1;
+            }
+
+            .toolbar-icon {
+                width: 36px; /* toolbar icon width */
+                height: 36px;
+                clip-path: inset(0 round calc(2 / 9 * 36px)); /* Continuous corner radius */
+                margin-left: 24px;
+                margin-right: 8px; /* Space between icon and app name */
+                margin-top: 8px;
+                margin-bottom: 8px;
+            }
+
+            .toolbar .app-name {
+                font-family: 'Montserrat', sans-serif;
+                font-size: 1.4em;
+                font-weight: bold;
+                color: #FFFFFF;
+                margin: 0; /* Remove any default margin on the text */
+            }
+
             /* Centered content wrapper */
             .content-wrapper {
                 max-width: 600px;
@@ -62,9 +104,9 @@
 
             /* App Icon */
             img.icon {
-                width: 120px;
+                width: 120px; /* content icon width */
                 height: 120px;
-                border-radius: 16px;
+                clip-path: inset(0 round calc(2 / 9 * 120px)); /* Continuous corner radius */
                 margin: 20px 0;
             }
 
@@ -109,7 +151,7 @@
             .faq-item {
                 background: rgba(255, 255, 255, 0.1);
                 border: 1px solid rgba(255, 255, 255, 0.2);
-                border-radius: 10px;
+                border-radius: 18px;
                 margin-bottom: 10px;
                 overflow: hidden;
                 cursor: pointer;
@@ -150,17 +192,36 @@
                 transform: rotate(90deg);
             }
 
-            /* Contact Links */
-            .links {
-                display: flex;
-                justify-content: center;
-                gap: 15px;
-                margin: 40px 0;
+            /* Footer styling */
+            .footer {
+                text-align: center;
+                padding: 10px 0;
+                font-size: 14px;
+                color: rgba(255, 255, 255, 0.7); /* Slightly faded text for subtle effect */
+                background-color: rgba(0, 0, 0, 0.5); /* Match toolbar styling */
+                width: 100%;
+                margin-top: 24px;
+                margin-bottom: 24px;
             }
-            .links a {
+
+            /* Social links styling */
+            .social-links {
+                display: flex;
+                flex-direction: column; /* Vertical layout */
+                align-items: center;
+                gap: 16px; /* Vertical spacing between links */
+                margin-bottom: 36px; /* Space above social links */
+            }
+
+            .social-links a {
+                color: rgba(255, 255, 255, 0.5); /* Less accentuated color */
                 text-decoration: none;
-                color: rgba(118, 109, 214, 1); /* Relaxeye accent color */
-                font-weight: 500;
+                display: inline;
+            }
+
+            .social-links a:hover {
+                color: rgba(255, 255, 255, 0.7); /* Slightly increase contrast on hover */
+                text-decoration: underline;
             }
 
             /* Responsive Layout */
@@ -171,15 +232,21 @@
         </style>
     </head>
     <body>
+        <!-- Top Toolbar -->
+        <div class="toolbar">
+            <img src="app-icon.png" alt="App Icon" class="toolbar-icon">
+            <span class="app-name">Relaxeye</span>
+        </div>
+
         <div class="content-wrapper">
             <!-- App Icon -->
             <img src="app-icon.png" alt="App Icon" class="icon" loading="lazy">
 
             <!-- Slogan -->
-            <h1>Protect Your Eyes, Enhance Your Comfort</h1>
+            <h1 id="title">Protect Your Eyes.<br>Enhance Your Comfort.<br>Try Relaxeye today.</h1>
 
             <!-- Subtitle -->
-            <h3 class="subtitle">Your trusted companion for reducing eye strain and promoting healthier screen habits.</h3>
+            <h3 class="subtitle" id="subtitle">Your trusted companion for reducing eye strain and promoting healthier screen habits.</h3>
 
             <!-- Download Button -->
             <div class="button">
@@ -270,7 +337,7 @@
                             <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                         </svg>
                     </div>
-                    <div class="faq-answer">No data is collected. <a href="privacy-policy.html">Privacy Policy</a></div>
+                    <div class="faq-answer">No data is collected. <a href="https://relaxeye.app/privacy">Privacy Policy</a></div>
                 </div>
 
                 <div class="faq-item">
@@ -284,11 +351,14 @@
                 </div>
             </div>
 
-            <!-- Contact Links -->
-            <div class="links">
-                <a href="mailto:alex@relaxeye.app">Email</a>
-                <a href="https://twitter.com/RelaxeyeApp">Twitter</a>
-            </div>
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="social-links">
+                    <a href="https://twitter.com/RelaxeyeApp" target="_blank">@RelaxeyeApp</a>
+                    <a href="mailto:alex@relaxeye.app">alex@relaxeye.app</a>
+                </div>
+                &copy; <span id="current-year"></span> Aleksandr Gubanov. All rights reserved.
+            </footer>
         </div>
 
         <!-- JavaScript for FAQ toggling -->
@@ -298,6 +368,25 @@
                 const isOpen = faqItem.classList.toggle('open');
                 element.setAttribute('aria-expanded', isOpen);
             }
+            document.addEventListener("DOMContentLoaded", function() {
+                const toolbar = document.querySelector(".toolbar");
+                const title = document.querySelector("#title");
+                const subtitle = document.querySelector("#subtitle");
+
+                function toggleToolbarVisibility() {
+                    const titleBottom = title.getBoundingClientRect().bottom;
+                    const subtitleBottom = subtitle.getBoundingClientRect().bottom;
+
+                    if (titleBottom < 0 && subtitleBottom < 0) {
+                        toolbar.classList.add("visible");
+                    } else {
+                        toolbar.classList.remove("visible");
+                    }
+                }
+
+                window.addEventListener("scroll", toggleToolbarVisibility);
+            });
+            document.getElementById("current-year").textContent = new Date().getFullYear();
         </script>
     </body>
 </html>
