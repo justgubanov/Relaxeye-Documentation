@@ -19,7 +19,7 @@
             body {
                 font-family: 'Roboto', sans-serif;
                 color: #FFFFFF;
-                background: linear-gradient(180deg, #2C0735 0%, #000000 500px) no-repeat, #000000;
+                background: linear-gradient(180deg, rgba(118, 109, 214, 1) 0%, #000000 500px) no-repeat, #000000;
                 text-align: center;
                 padding: 0 20px;
                 margin: 0;
@@ -46,6 +46,13 @@
                 font-size: 1.4em;
                 margin: 10px 0;
             }
+            .subtitle {
+                font-family: 'Roboto', sans-serif;
+                font-size: 1.2em; /* Adjust size as needed */
+                font-weight: 400;
+                color: #CCCCCC; /* Adjust to match your theme */
+                margin: 10px 0 20px 0; /* Add spacing around the subtitle */
+            }
             p {
                 font-size: 1em;
                 line-height: 1.6;
@@ -59,12 +66,18 @@
                 height: 120px;
                 border-radius: 16px;
                 margin: 20px 0;
-                border: 2px solid rgba(118, 109, 214, 1); /* Relaxeye accent color */
             }
 
             /* Button styling */
             .button {
                 margin: 20px 0;
+            }
+
+            .button img {
+                transition: transform 0.2s ease;
+            }
+            .button img:hover {
+                transform: scale(1.05);
             }
 
             /* Screenshot styling */
@@ -94,34 +107,46 @@
                 border-top: 1px solid #333333;
             }
             .faq-item {
-                margin: 10px 0;
-                padding: 12px;
                 background: rgba(255, 255, 255, 0.1);
-                border: 1px solid rgba(255, 255, 255, 0.15);
-                border-radius: 12px;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 10px;
+                margin-bottom: 10px;
+                overflow: hidden;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .faq-question {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                cursor: pointer;
-                transition: background 0.3s;
+                padding: 15px;
+                color: #7a6be0; /* Accent color */
+                font-weight: bold;
             }
-            .faq-item:hover {
-                background: rgba(255, 255, 255, 0.15);
+
+            .faq-question:hover {
+                background: rgba(255, 255, 255, 0.1);
             }
-            .faq-question {
-                font-weight: 500;
-                color: rgba(118, 109, 214, 1); /* Relaxeye accent color */
-                font-family: 'Montserrat', sans-serif;
+
+            .faq-question svg {
+                transition: transform 0.3s ease;
+                width: 16px;
+                height: 16px;
             }
+
             .faq-answer {
+                padding: 15px;
+                font-size: 0.95em;
+                color: #ccc;
                 display: none;
-                padding: 10px 0 0 5px;
-                color: #AAAAAA;
             }
-            .chevron {
-                transition: transform 0.3s;
+
+            .faq-item.open .faq-answer {
+                display: block;
             }
-            .faq-item.open .chevron {
+
+            .faq-item.open .faq-question svg {
                 transform: rotate(90deg);
             }
 
@@ -148,10 +173,13 @@
     <body>
         <div class="content-wrapper">
             <!-- App Icon -->
-            <img src="app-icon.png" alt="App Icon" class="icon">
+            <img src="app-icon.png" alt="App Icon" class="icon" loading="lazy">
 
             <!-- Slogan -->
             <h1>Protect Your Eyes, Enhance Your Comfort</h1>
+
+            <!-- Subtitle -->
+            <h3 class="subtitle">Your trusted companion for reducing eye strain and promoting healthier screen habits.</h3>
 
             <!-- Download Button -->
             <div class="button">
@@ -159,7 +187,7 @@
             </div>
 
             <!-- iPhone Screenshot -->
-            <img src="screenshot-main.png" alt="App Screenshot" class="screenshot">
+            <img src="screenshot-main.png" alt="App Screenshot" class="screenshot" loading="lazy">
 
             <!-- Benefits Section -->
             <div class="benefits">
@@ -185,64 +213,90 @@
             <!-- FAQ Section -->
             <div class="faq">
                 <h2>Frequently Asked Questions</h2>
-                <div class="faq-item" onclick="toggleFAQ(0)">
-                    <p class="faq-question">How does this app work and is it effective?</p>
-                    <span class="chevron">▶</span>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How does this app work and is it effective?
+                        <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="bi bi-chevron-right">
+                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">The app follows the Bates Method, guiding eye movement with an animated dot for relaxation.</div>
                 </div>
-                <div class="faq-answer">The app follows the Bates Method, guiding eye movement with an animated dot for relaxation.</div>
 
-                <div class="faq-item" onclick="toggleFAQ(1)">
-                    <p class="faq-question">How often should I do eye exercises per day?</p>
-                    <span class="chevron">▶</span>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How often should I do eye exercises per day?
+                        <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="bi bi-chevron-right">
+                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">Most users benefit from 1-2 sessions per day, especially during long periods of screen time.</div>
                 </div>
-                <div class="faq-answer">Most users benefit from 1-2 sessions per day, especially during long periods of screen time.</div>
 
-                <div class="faq-item" onclick="toggleFAQ(2)">
-                    <p class="faq-question">What are common use cases for this app?</p>
-                    <span class="chevron">▶</span>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        What are common use cases for this app?
+                        <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="bi bi-chevron-right">
+                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">Great for anyone using screens for extended periods, or wanting to reduce eye strain.</div>
                 </div>
-                <div class="faq-answer">Great for anyone using screens for extended periods, or wanting to reduce eye strain.</div>
 
-                <div class="faq-item" onclick="toggleFAQ(3)">
-                    <p class="faq-question">What platforms is this app available on?</p>
-                    <span class="chevron">▶</span>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        What platforms is this app available on?
+                        <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="bi bi-chevron-right">
+                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">Currently available on iPhone and iPad only.</div>
                 </div>
-                <div class="faq-answer">Currently available on iPhone and iPad only.</div>
 
-                <div class="faq-item" onclick="toggleFAQ(4)">
-                    <p class="faq-question">How do I synchronize progress across devices?</p>
-                    <span class="chevron">▶</span>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How do I synchronize progress across devices?
+                        <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="bi bi-chevron-right">
+                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">In the app, go to Settings -> General, and toggle "Share across devices". Make sure you're logged into your Apple account.</div>
                 </div>
-                <div class="faq-answer">In the app, go to Settings -> General, and toggle "Share across devices". Make sure you're logged into your Apple account.</div>
 
-                <div class="faq-item" onclick="toggleFAQ(5)">
-                    <p class="faq-question">Does the app collect any data?</p>
-                    <span class="chevron">▶</span>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Does the app collect any data?
+                        <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="bi bi-chevron-right">
+                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">No data is collected. <a href="privacy-policy.html">Privacy Policy</a></div>
                 </div>
-                <div class="faq-answer">No data is collected. <a href="privacy-policy.html">Privacy Policy</a></div>
 
-                <div class="faq-item" onclick="toggleFAQ(6)">
-                    <p class="faq-question">Is this app a medical treatment?</p>
-                    <span class="chevron">▶</span>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Is this app a medical treatment?
+                        <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="bi bi-chevron-right">
+                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">No, please consult a doctor for medical advice.</div>
                 </div>
-                <div class="faq-answer">No, please consult a doctor for medical advice.</div>
             </div>
 
             <!-- Contact Links -->
             <div class="links">
-                <a href="mailto:alex@Relaxeye.app">Email</a>
-                <a href="https://twitter.com/your_twitter">Twitter</a>
+                <a href="mailto:alex@relaxeye.app">Email</a>
+                <a href="https://twitter.com/RelaxeyeApp">Twitter</a>
             </div>
         </div>
 
         <!-- JavaScript for FAQ toggling -->
         <script>
-            function toggleFAQ(index) {
-                const faqItem = document.getElementsByClassName('faq-item')[index];
-                const faqAnswer = document.getElementsByClassName('faq-answer')[index];
-                const isOpen = faqAnswer.style.display === 'block';
-                faqAnswer.style.display = isOpen ? 'none' : 'block';
-                faqItem.classList.toggle('open');
+            function toggleFaq(element) {
+                const faqItem = element.parentElement;
+                const isOpen = faqItem.classList.toggle('open');
+                element.setAttribute('aria-expanded', isOpen);
             }
         </script>
     </body>
